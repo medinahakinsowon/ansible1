@@ -1,0 +1,32 @@
+---
+- name: installing softwares with conditions
+  hosts: localhost
+
+
+  vars:
+    software:
+      - name: python
+        required: true
+      - name: java
+        required: false
+      - name: maven
+        required: true
+      - name: tomcat
+        required: false
+      - name: nginx
+        required: true
+
+  tasks:
+    - name: install {{ item.name }}
+      command: echo "Installing {{ item.name }}"
+      when: item.required==true
+      loop: {{ software }}
+
+    - name: create {{ item }}
+      user: name="{{ item }}" state=present
+      loop:
+        - medinat
+        - soburah
+        - soffiyyah
+        - summayyah
+        - ubaydah

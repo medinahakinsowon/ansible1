@@ -1,0 +1,18 @@
+
+- name: Play 1
+  hosts: localhost
+
+  tasks:
+      - include_vars: vars.yml
+      - name: helloworld
+        shell: echo "hello world"
+      - name: hi
+        shell: echo "hi"
+      - name: using vars
+        lineinfile:
+            path: new.sh
+            line: '{{ ip_address }}'
+      - name: add in line
+        lineinfile:
+             path: new.sh
+             line: '{{ food }}'

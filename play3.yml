@@ -1,0 +1,16 @@
+---
+- name: Installing softwares
+  hosts: localhost
+
+  vars:
+    software:
+      - python
+      - java
+      - maven
+      - tomcat
+      - nginx
+
+  tasks:
+    - name: install {{ item }}
+      command: echo "Installing {{ item }}"
+      loop: '{{ software }}'
